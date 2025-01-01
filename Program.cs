@@ -6,6 +6,7 @@ public class MyForm : Form
 {
     private TextBox textBox;
     private Label label;
+    private Label label2;
 
     // Variables for dragging
     private bool isDragging = false;
@@ -15,7 +16,7 @@ public class MyForm : Form
     {
         // Set the form's size
         this.Width = 250;
-        this.Height = 90;
+        this.Height = 95;
 
         // Remove maximize, minimize, and close buttons
         this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -39,7 +40,16 @@ public class MyForm : Form
         label.Width = this.ClientSize.Width - 10; // Same width as TextBox
         label.Location = new Point(5, textBox.Bottom + 5); // Place it below the TextBox
         label.Text = "Enter an epoch time.";  // Initial text
+        label.Font = new Font(Label.DefaultFont, FontStyle.Bold);
         this.Controls.Add(label);
+
+        // Create the Label2
+        label2 = new Label();
+        label2.Width = this.ClientSize.Width - 10; // Same width as TextBox
+        label2.Location = new Point(5, label.Bottom); // Place it below the TextBox
+        label2.Text = "";  // Initial text
+        label2.Font = new Font(Label.DefaultFont, FontStyle.Bold);
+        this.Controls.Add(label2);
 
         // Event handlers for dragging the form
         this.MouseDown += Form_MouseDown;
@@ -71,16 +81,19 @@ public class MyForm : Form
             try
             {
                 DateTimeOffset dateTime = DateTimeOffset.FromUnixTimeSeconds(epochTime);
-                label.Text = dateTime.ToString("f");  // Format as long date and time
+                label.Text = dateTime.ToString("dd-MMM-yyyy HH:mm:ss") + " (Local)";  // Format as long date and time
+                label2.Text = dateTime.ToString("R");  // Format as long date and time
             }
             catch (Exception)
             {
                 label.Text = "Invalid epoch time.";
+                label2.Text = "";
             }
         }
         else
         {
             label.Text = "Invalid epoch time.";
+            label2.Text = "";
         }
     }
 
