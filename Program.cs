@@ -76,8 +76,9 @@ public class MyForm : Form
         string input = textBox.Text;
 
         // Try to parse the input as an EPOCH time
-        if (long.TryParse(input, out long epochTime))
+        if (double.TryParse(input, out double txtVal))
         {
+            long epochTime = (long)Math.Round(txtVal);
             try
             {
                 DateTimeOffset dateTime = DateTimeOffset.FromUnixTimeSeconds(epochTime);
