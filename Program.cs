@@ -16,7 +16,7 @@ public class MyForm : Form
     {
         // Set the form's size
         this.Width = 250;
-        this.Height = 95;
+        this.Height = 105;
 
         // Remove maximize, minimize, and close buttons
         this.FormBorderStyle = FormBorderStyle.FixedDialog;
