@@ -81,8 +81,8 @@ public class MyForm : Form
             try
             {
                 DateTimeOffset dateTime = DateTimeOffset.FromUnixTimeSeconds(epochTime);
-                label.Text = dateTime.ToString("dd-MMM-yyyy HH:mm:ss") + " (Local)";  // Format as long date and time
-                label2.Text = dateTime.ToString("R");  // Format as long date and time
+                label.Text = dateTime.ToLocalTime().ToString("ddd dd-MMM-yyyy HH:mm:ss") + " (Local)";
+                label2.Text = dateTime.ToString("ddd dd-MMM-yyyy HH:mm:ss") + " UTC";  
             }
             catch (Exception)
             {
