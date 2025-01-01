@@ -1,2 +1,14 @@
-bin/*
-obj/*
+# Ignore build directories
+bin/
+obj/
+
+# Optional: Ignore user-specific Visual Studio or IDE settings
+*.user
+*.suo
+*.log
+
+# Optional: Ignore build and debug files
+*.exe
+*.dll
+*.pdb
+*.cache
